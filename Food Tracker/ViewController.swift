@@ -20,6 +20,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //Handle the text field's user input through delegate callbacks
         //this makes ViewController a delegate for nameTextField
         nameTextField.delegate = self
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,6 +31,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK:  UITextFieldDelegate
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if(nameTextField.text == "Default text")
+        {
+            nameTextField.text = ""
+            
+        }
+    }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -36,6 +47,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // MARK: Actions
     @IBAction func setDefaultLabelText(sender: UIButton) {
         nameTextField.text = "Default text"
+        nameTextField.resignFirstResponder()
     }
 
 }
