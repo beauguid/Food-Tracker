@@ -12,7 +12,11 @@ class RatingControl: UIView {
     
     //MARK: Properties
     
-    var rating = 0
+    var rating = 0 {
+        didSet {
+            setNeedsLayout()
+        }
+    }
     var ratingButtons = [UIButton]()
     let spacing = 5
     let starCount = 5
@@ -53,12 +57,14 @@ class RatingControl: UIView {
             buttonFrame.origin.x = CGFloat(index * (buttonSize + spacing))
             button.frame = buttonFrame
         }
+        updateButtonSelectionStates()
     }
     
     func ratingButtonTapped(button: UIButton){
         rating = ratingButtons.indexOf(button)! + 1
+        updateButtonSelectionStates()
     }
-    //left off at setp 5
+    //function to be called that updates the star selection
     func updateButtonSelectionStates() {
         for (index, button) in ratingButtons.enumerate(){
             //If the index of a button is less than the rating, that button should be selected.
