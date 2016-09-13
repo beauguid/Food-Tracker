@@ -28,7 +28,7 @@ class RatingControl: UIView {
         let emptyStarImage = UIImage(named: "emptyStar")
         
         for _ in 0..<starCount {
-            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
             
             button.setImage(emptyStarImage, forState: .Normal)
             button.setImage(filledStarImage, forState: .Selected)
